@@ -18,7 +18,6 @@
  */
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
-
 import { getServerAuthSession } from "../auth";
 
 type CreateContextOptions = {
@@ -67,8 +66,8 @@ import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-openapi";
 
 const t = initTRPC
-  .meta<OpenApiMeta>()
   .context<typeof createTRPCContext>()
+  .meta<OpenApiMeta>()
   .create({
     transformer: superjson,
     errorFormatter({ shape }) {
